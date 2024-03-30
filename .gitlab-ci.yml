@@ -3,7 +3,7 @@ stages:
 
 build_job:
   stage: build
-  image: maven:3.8.1-jdk-17
+  image: maven:3.6.3-jdk-17-slim
   script:
     - cd /builds/HyeokChan/basiccounter/counterapp
     - mvn clean package
