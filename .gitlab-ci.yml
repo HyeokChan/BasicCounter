@@ -1,7 +1,13 @@
 stages:
   - build
 
-build_job:
+variables:
+  NODE_VERSION: '14' # 리액트 프로젝트를 위한 Node.js 버전
+
+before_script:
+  - 'which npm || (curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - && apt-get install -y nodejs)'
+
+build_spring:
   stage: build
   image: maven:3.8.3-openjdk-17
   script:
@@ -9,6 +15,19 @@ build_job:
     - mvn clean package
   artifacts:
     paths:
-      - target/*.jar
+      - /builds/HyeokChan/basiccounter/counterapp/target/*.jar
+  only:
+    - main
+
+build_react:
+  stage: build
+  image: node:latest
+  script:
+    - cd /builds/HyeokChan/basiccounter/basiccounterfront
+    - npm install # 의존성 설치
+    - npm run build # 빌드 실행
+  artifacts:
+    paths:
+      - build # 리액트 프로젝트 빌드 결과물
   only:
     - main
