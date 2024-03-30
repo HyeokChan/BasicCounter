@@ -22,6 +22,6 @@ build_react:
     - npm run build # 빌드 실행
   artifacts:
     paths:
-      - /builds/HyeokChan/basiccounter/build/*
+      - /builds/HyeokChan/basiccounter/basiccounterfront/build/*
   only:
     - main
