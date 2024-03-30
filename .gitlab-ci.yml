@@ -9,6 +9,6 @@ build_job:
     - mvn clean package
   artifacts:
     paths:
-      - target/*.jar
+      - /builds/HyeokChan/basiccounter/counterapp/target/*.jar
   only:
     - main
