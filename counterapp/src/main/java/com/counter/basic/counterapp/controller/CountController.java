@@ -5,15 +5,13 @@ import com.counter.basic.counterapp.service.CountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/count")
+@RestController
+@RequestMapping("/api/count")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin
 public class CountController {
     private final CountService countService;
 
@@ -31,7 +29,7 @@ public class CountController {
      * @return
      */
     @PostMapping("/increase")
-    public int increaseCount(Count count){
+    public int increaseCount(@RequestBody Count count){
         return countService.increaseCount(count);
     }
 
@@ -41,7 +39,7 @@ public class CountController {
      * @return
      */
     @PostMapping("/decrease")
-    public int decreaseCount(Count count){
+    public int decreaseCount(@RequestBody Count count){
         return countService.decreaseCount(count);
     }
 }

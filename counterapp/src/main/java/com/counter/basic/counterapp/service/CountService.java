@@ -1,9 +1,11 @@
 package com.counter.basic.counterapp.service;
 
 import com.counter.basic.counterapp.model.Count;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class CountService {
     /**
      * count 증가
