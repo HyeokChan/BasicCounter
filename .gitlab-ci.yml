@@ -5,6 +5,7 @@ build_job:
   stage: build
   image: maven:3.6.3-jdk-11
   script:
+    - cd /builds/HyeokChan/basiccounter/counterapp
     - mvn clean package
   artifacts:
     paths:
