@@ -1,0 +1,20 @@
+build-job:
+    stage: build
+    script:
+        - echo "Hello World"
+
+test-job1:
+    stage: test
+    script:
+        - echo "This job 1"
+
+test-job2:
+    stage: test
+    script:
+        - echo "This job 2"
+
+deploy-prod:
+    stage: deploy
+    script:
+        - echo "This job deploys something"
+    environment: production
