@@ -26,7 +26,7 @@ function App() {
 
     return (
         <div className="App">
-            <div className={"counterContainer"}>
+            <div className={"counter-container"}>
                 <div>
                     <p className={"count-label"}>COUNT</p>
                 </div>

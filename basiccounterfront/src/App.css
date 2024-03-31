@@ -50,18 +50,18 @@ html, body {
   font-size: 24px; /* 글자 크기 */
   font-weight: bold; /* 글자 두께 */
   margin-bottom: 10px; /* 숫자와의 간격 */
-  color: #333; /* 글자 색상 */
+  color: #003366; /* 글자 색상 */
 }
 
 /* 숫자 스타일 */
 .counter {
   font-size: 48px; /* 숫자 크기 */
   font-weight: bold; /* 숫자 두께 */
-  color: #333; /* 숫자 색상 */
+  color: #003366; /* 숫자 색상 */
 }
 
 .count-button {
-  background-color: #4CAF50; /* 녹색 배경 */
+  background-color: #4472C4; /* 파란색 배경 */
   border: none;
   color: white; /* 텍스트 색상 */
   padding: 15px; /* 상하 패딩 */
@@ -79,15 +79,16 @@ html, body {
   box-sizing: border-box; /* 패딩을 포함한 총 너비 유지 */
 }
 
-.countButton:hover {
-  background-color: #45a049; /* 호버 시 배경 색상 변경 */
+.count-button:hover {
+  background-color: #365F91; /* 호버 시 배경 색상 변경 */
 }
 
 
-.counterContainer {
-  border: 2px solid #4CAF50; /* 테두리 색상과 두께 */
+.counter-container {
+  border: 2px solid #4472C4; /* 테두리 색상과 두께 */
   padding: 20px; /* 내부 여백 */
   width: fit-content; /* 내용에 맞게 크기 조정 */
   margin: auto; /* 중앙 정렬 */
   border-radius: 10px; /* 모서리 둥글게 */
+  background-color: #E7F1FF;
 }
