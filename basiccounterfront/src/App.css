@@ -45,14 +45,22 @@ html, body {
   align-items: center; /* 수직 중앙 정렬 */
 }
 
-.numberDisplay {
-  font-size: 20px; /* 숫자 폰트 크기 */
-  color: #333; /* 숫자 색상 */
-  text-align: center; /* 중앙 정렬 */
-  margin-bottom: 20px; /* 버튼과의 간격 */
+/* "COUNT" 글자 스타일 */
+.count-label {
+  font-size: 24px; /* 글자 크기 */
+  font-weight: bold; /* 글자 두께 */
+  margin-bottom: 10px; /* 숫자와의 간격 */
+  color: #333; /* 글자 색상 */
 }
 
-.countButton {
+/* 숫자 스타일 */
+.counter {
+  font-size: 48px; /* 숫자 크기 */
+  font-weight: bold; /* 숫자 두께 */
+  color: #333; /* 숫자 색상 */
+}
+
+.count-button {
   background-color: #4CAF50; /* 녹색 배경 */
   border: none;
   color: white; /* 텍스트 색상 */
