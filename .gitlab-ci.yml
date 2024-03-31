@@ -1,15 +1,22 @@
 stages:
   - build
+  - dockerize
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+  SPRING_IMAGE_TAG: $CI_REGISTRY_IMAGE/counterapp:$CI_COMMIT_REF_SLUG
+  REACT_IMAGE_TAG: $CI_REGISTRY_IMAGE/basiccounterfront:$CI_COMMIT_REF_SLUG
 
 build_spring:
   stage: build
   image: maven:3.8.3-openjdk-17
   script:
-    - cd /builds/HyeokChan/basiccounter/counterapp
+    - cd counterapp
     - mvn clean package
   artifacts:
     paths:
-      - /builds/HyeokChan/basiccounter/counterapp/target/*.jar
+      - counterapp/target/*.jar
   only:
     - main
 
@@ -17,11 +24,39 @@ build_react:
   stage: build
   image: node:latest
   script:
-    - cd /builds/HyeokChan/basiccounter/basiccounterfront
-    - npm install # 의존성 설치
-    - npm run build # 빌드 실행
+    - cd basiccounterfront
+    - npm install
+    - npm run build
   artifacts:
     paths:
-      - /builds/HyeokChan/basiccounter/basiccounterfront/build/*
+      - basiccounterfront/build/*
   only:
     - main
+
+dockerize_spring:
+  stage: dockerize
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - cd counterapp
+    - docker build -t $SPRING_IMAGE_TAG .
+    - docker push $SPRING_IMAGE_TAG
+  only:
+    - main
+  dependencies:
+    - build_spring
+
+dockerize_react:
+  stage: dockerize
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - cd basiccounterfront
+    - docker build -t $REACT_IMAGE_TAG .
+    - docker push $REACT_IMAGE_TAG
+  only:
+    - main
+  dependencies:
+    - build_react
