@@ -28,13 +28,16 @@ function App() {
         <div className="App">
             <div className={"counterContainer"}>
                 <div>
-                    <p className={"numberDisplay"}>{count}</p>
+                    <p className={"count-label"}>COUNT</p>
                 </div>
                 <div>
-                    <button className={"countButton"} onClick={increaseCount}>
+                    <p className={"counter"}>{count}</p>
+                </div>
+                <div>
+                    <button className={"count-button"} onClick={increaseCount}>
                         plus
                     </button>
-                    <button className={"countButton"} onClick={decreaseCount}>
+                    <button className={"count-button"} onClick={decreaseCount}>
                         minus
                     </button>
                 </div>
