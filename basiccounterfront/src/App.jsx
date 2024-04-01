@@ -8,7 +8,7 @@ function App() {
         const postData = {
             count: count
         }
-        axios.post('http://localhost:8081/api/count/increase', postData)
+        axios.post('http://43.203.125.28:8081/api/count/increase', postData)
             .then(response => {
                 setCount(response.data);
             });
@@ -18,7 +18,7 @@ function App() {
         const postData = {
             count : count
         }
-        axios.post('http://localhost:8081/api/count/decrease', postData)
+        axios.post('http://43.203.125.28:8081/api/count/decrease', postData)
             .then(response => {
                 setCount(response.data);
             });
