@@ -5,8 +5,8 @@ stages:
 variables:
   DOCKER_HOST: tcp://docker:2375/
   DOCKER_DRIVER: overlay2
-  SPRING_IMAGE_TAG: $CI_REGISTRY_IMAGE/counterapp:$CI_COMMIT_REF_SLUG
-  REACT_IMAGE_TAG: $CI_REGISTRY_IMAGE/basiccounterfront:$CI_COMMIT_REF_SLUG
+  SPRING_IMAGE_TAG: $CI_REGISTRY_IMAGE/counterapp:${CI_COMMIT_REF_SLUG}_spring
+  REACT_IMAGE_TAG: $CI_REGISTRY_IMAGE/basiccounterfront:${CI_COMMIT_REF_SLUG}_react
 
 build_spring:
   stage: build
