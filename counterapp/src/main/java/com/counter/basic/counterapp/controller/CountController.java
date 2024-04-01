@@ -19,8 +19,8 @@ public class CountController {
      * test log 확인
      */
     @GetMapping("/test")
-    public void test(){
-        log.info("test OK");
+    public String test(){
+        return "test OK";
     }
 
     /**

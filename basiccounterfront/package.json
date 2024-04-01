@@ -36,7 +36,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://43.203.125.28:8081",
+
   "rules": {
     "no-unused-vars": "warn"
   }
