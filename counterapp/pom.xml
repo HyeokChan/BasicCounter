@@ -80,15 +80,6 @@
 				<activated.profile>prod</activated.profile>
 			</properties>
 			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<activated.profile>dev</activated.profile>
-			</properties>
-			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
