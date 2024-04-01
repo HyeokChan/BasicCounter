@@ -13,7 +13,7 @@ build_spring:
   image: maven:3.8.3-openjdk-17
   script:
     - cd counterapp
-    - mvn clean package -P prod
+    - mvn clean package -Pprod
   artifacts:
     paths:
       - counterapp/target/*.jar
