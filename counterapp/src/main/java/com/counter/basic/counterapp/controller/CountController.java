@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/count")
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin
 public class CountController {
     private final CountService countService;
 
