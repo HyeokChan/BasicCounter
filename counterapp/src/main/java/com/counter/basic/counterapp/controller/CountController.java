@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/count")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = {"http://localhost:3000", "http://43.203.125.28:3000"}, allowCredentials = "true")
 public class CountController {
     private final CountService countService;
 
@@ -19,7 +20,7 @@ public class CountController {
      */
     @GetMapping("/test")
     public String test(){
-        return "test2 OK";
+        return "test3 OK";
     }
 
     /**
