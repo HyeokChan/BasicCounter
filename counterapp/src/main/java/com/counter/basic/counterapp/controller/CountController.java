@@ -19,7 +19,7 @@ public class CountController {
      */
     @GetMapping("/test")
     public String test(){
-        return "test OK";
+        return "test2 OK";
     }
 
     /**
