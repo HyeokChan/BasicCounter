@@ -1,4 +1,5 @@
 stages:
+  - trigger
   - build
   - dockerize
 
@@ -7,6 +8,12 @@ variables:
   DOCKER_DRIVER: overlay2
   SPRING_IMAGE_TAG: $CI_REGISTRY_IMAGE/counterapp:${CI_COMMIT_REF_SLUG}_spring
   REACT_IMAGE_TAG: $CI_REGISTRY_IMAGE/basiccounterfront:${CI_COMMIT_REF_SLUG}_react
+
+start_build:
+  stage: trigger
+  script:
+    - echo "Triggering build job"
+  when: manual
 
 build_spring:
   stage: build
@@ -17,6 +24,8 @@ build_spring:
   artifacts:
     paths:
       - counterapp/target/*.jar
+  needs:
+    - start_build
   only:
     - main
 
@@ -30,6 +39,8 @@ build_react:
   artifacts:
     paths:
       - basiccounterfront/build/*
+  needs:
+    - start_build
   only:
     - main
 
@@ -48,6 +59,8 @@ dockerize_spring:
     - main
   dependencies:
     - build_spring
+  needs:
+    - build_spring
 
 dockerize_react:
   stage: dockerize
@@ -63,4 +76,6 @@ dockerize_react:
   only:
     - main
   dependencies:
+    - build_react
+  needs:
     - build_react
