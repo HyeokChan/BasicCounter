@@ -35,7 +35,7 @@ build_react:
   script:
     - cd basiccounterfront
     - npm install
-    - REACT_APP_SPRING_BASE_URL=$REACT_APP_SPRING_BASE_URL npm run build
+    - npm run build
   artifacts:
     paths:
       - basiccounterfront/build/*
