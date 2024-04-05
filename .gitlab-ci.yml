@@ -59,6 +59,8 @@ dockerize_spring:
     - main
   dependencies:
     - build_spring
+  needs:
+    - build_spring
 
 dockerize_react:
   stage: dockerize
@@ -74,4 +76,6 @@ dockerize_react:
   only:
     - main
   dependencies:
+    - build_react
+  needs:
     - build_react
