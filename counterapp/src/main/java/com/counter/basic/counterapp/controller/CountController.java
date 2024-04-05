@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/count")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "http://43.203.125.28:3000", allowedHeaders = "*")
 public class CountController {
     private final CountService countService;
 
