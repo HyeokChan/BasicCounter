@@ -34,7 +34,6 @@ build_react:
   image: node:latest
   script:
     - cd basiccounterfront
-    - rm -rf node_modules build
     - npm install
     - npm run build
   artifacts:
