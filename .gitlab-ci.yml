@@ -2,7 +2,7 @@ stages:
   - trigger
   - build
   - dockerize
-  - deployment
+  - deploy
 
 variables:
   DOCKER_HOST: tcp://docker:2375/
