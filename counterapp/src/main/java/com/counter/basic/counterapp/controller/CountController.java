@@ -2,6 +2,7 @@ package com.counter.basic.counterapp.controller;
 
 import com.counter.basic.counterapp.model.Count;
 import com.counter.basic.counterapp.service.CountService;
+import com.counter.basic.counterapp.utils.UserUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,8 +52,7 @@ public class CountController {
      */
     @PostMapping("/save")
     public int saveCount(@RequestBody Count count, HttpServletRequest httpServletRequest){
-        count.setUserIp(httpServletRequest.getRemoteAddr());
+        count.setUserIp(UserUtils.getUserIp(httpServletRequest));
         return countService.saveCount(count);
     }
-
 }
