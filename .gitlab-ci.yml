@@ -98,6 +98,8 @@ deploy_to_ec2:
     - ssh $EC2_USER@$EC2_HOST "docker pull $REACT_IMAGE_TAG"
     - ssh $EC2_USER@$EC2_HOST "docker stop react-app || true && docker rm react-app || true"
     - ssh $EC2_USER@$EC2_HOST "docker run -d --name react-app -p 3000:80 $REACT_IMAGE_TAG"
+    - ssh $EC2_USER@$EC2_HOST "docker system prune -a"
+    - ssh $EC2_USER@$EC2_HOST "docker volume prune"
   needs:
     - dockerize_spring
     - dockerize_react
