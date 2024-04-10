@@ -2,6 +2,7 @@ stages:
   - trigger
   - build
   - dockerize
+  - deployment
 
 variables:
   DOCKER_HOST: tcp://docker:2375/
@@ -79,3 +80,27 @@ dockerize_react:
     - build_react
   needs:
     - build_react
+
+deploy_to_ec2:
+  stage: deploy
+  image: ubuntu:latest
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+  script:
+    - ssh -i $SSH_PRIVATE_KEY $EC2_USER@$EC2_HOST "docker pull $SPRING_IMAGE_TAG"
+    - ssh -i $SSH_PRIVATE_KEY $EC2_USER@$EC2_HOST "docker stop spring-app || true && docker rm spring-app || true"
+    - ssh -i $SSH_PRIVATE_KEY $EC2_USER@$EC2_HOST "docker run -d --name spring-app -p 8081:8081 $SPRING_IMAGE_TAG"
+    - ssh -i $SSH_PRIVATE_KEY $EC2_USER@$EC2_HOST "docker pull $REACT_IMAGE_TAG"
+    - ssh -i $SSH_PRIVATE_KEY $EC2_USER@$EC2_HOST "docker stop react-app || true && docker rm react-app || true"
+    - ssh -i $SSH_PRIVATE_KEY $EC2_USER@$EC2_HOST "docker run -d --name react-app -p 3000:80 $REACT_IMAGE_TAG"
+  needs:
+    - dockerize_spring
+    - dockerize_react
+  only:
+    - main
+
