@@ -28,7 +28,7 @@ function App() {
         <div className="App">
             <div className={"counter-container"}>
                 <div>
-                    <p className={"count-label"}>COUNT</p>
+                    <p className={"count-label"}>COUNT v1.1</p>
                 </div>
                 <div>
                     <p className={"counter"}>{count}</p>
