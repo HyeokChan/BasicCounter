@@ -2,6 +2,7 @@ package com.counter.basic.counterapp.controller;
 
 import com.counter.basic.counterapp.model.Count;
 import com.counter.basic.counterapp.service.CountService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -42,4 +43,16 @@ public class CountController {
     public int decreaseCount(@RequestBody Count count){
         return countService.decreaseCount(count);
     }
+
+    /**
+     * count 저장
+     * @param count
+     * @return
+     */
+    @PostMapping("/save")
+    public int saveCount(@RequestBody Count count, HttpServletRequest httpServletRequest){
+        count.setUserIp(httpServletRequest.getRemoteAddr());
+        return countService.saveCount(count);
+    }
+
 }

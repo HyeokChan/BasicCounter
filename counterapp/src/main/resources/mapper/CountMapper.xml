@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.counter.basic.counterapp.mapper.CountMapper">
+
+    <!--user ip 체크-->
+    <select id="selectCountByUserIp" parameterType="Count" resultType="int">
+        SELECT COUNT(1)
+          FROM TB_COUNT_MASTER
+         WHERE USER_IP = #{userIp}
+    </select>
+
+    <!--count 신규 저장-->
+    <insert id="insertCount" parameterType="Count">
+        <selectKey keyProperty="countId" resultType="int" order="BEFORE">
+            SELECT SQ_COUNT.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TB_COUNT_MASTER (
+        COUNT_ID,
+        USER_IP,
+        COUNT_VALUE,
+        REGIST_ID,
+        REGIST_DATE,
+        UPDATE_ID,
+        UPDATE_DATE
+        ) VALUES (
+        #{countId},
+        #{userIp},
+        #{countValue},
+        'SYSTEM',
+        SYSDATE,
+        'SYSTEM',
+        SYSDATE
+        )
+    </insert>
+
+    <!--count 갱신-->
+    <update id="updateCount" parameterType="Count">
+        UPDATE TB_COUNT_MASTER
+           SET COUNT_VALUE = #{countValue}
+         WHERE USER_IP = #{userIp}
+    </update>
+
+</mapper>
