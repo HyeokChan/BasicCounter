@@ -40,4 +40,11 @@
          WHERE USER_IP = #{userIp}
     </update>
 
+    <!--count 불러오기-->
+    <select id="loadCount" parameterType="Count" resultType="int">
+        SELECT NVL(COUNT_VALUE, 0)
+          FROM TB_COUNT_MASTER
+         WHERE USER_IP = #{userIp}
+    </select>
+
 </mapper>

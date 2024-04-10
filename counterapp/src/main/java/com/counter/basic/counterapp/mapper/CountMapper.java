@@ -26,4 +26,11 @@ public interface CountMapper {
      * @return
      */
     int insertCount(Count count);
+
+    /**
+     * ip 기반으로 count 불러오기
+     * @param count
+     * @return
+     */
+    int loadCount(Count count);
 }

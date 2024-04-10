@@ -26,11 +26,11 @@ function App() {
 
     const loadCount = (e) => {
         const postData = {
-            countValue : countValue
+
         }
         axios.post(`${process.env.REACT_APP_SPRING_BASE_URL}/api/count/load`, postData)
             .then(response => {
-
+                setCountValue(response.data);
             });
     }
 

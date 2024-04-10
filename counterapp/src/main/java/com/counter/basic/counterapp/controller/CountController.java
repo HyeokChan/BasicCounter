@@ -48,11 +48,24 @@ public class CountController {
     /**
      * count 저장
      * @param count
+     * @param httpServletRequest
      * @return
      */
     @PostMapping("/save")
     public int saveCount(@RequestBody Count count, HttpServletRequest httpServletRequest){
         count.setUserIp(UserUtils.getUserIp(httpServletRequest));
         return countService.saveCount(count);
+    }
+
+    /**
+     * IP 기반으로 count 불러오기
+     * @param httpServletRequest
+     * @return
+     */
+    @PostMapping("/load")
+    public int loadCount(HttpServletRequest httpServletRequest){
+        Count count = new Count();
+        count.setUserIp(UserUtils.getUserIp(httpServletRequest));
+        return countService.loadCount(count);
     }
 }

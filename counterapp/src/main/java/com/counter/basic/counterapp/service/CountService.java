@@ -48,4 +48,13 @@ public class CountService {
         }
         return saveResult;
     }
+
+    /**
+     * ip 기반으로 count 불러오기
+     * @param count
+     * @return
+     */
+    public int loadCount(Count count) {
+        return countMapper.loadCount(count);
+    }
 }
